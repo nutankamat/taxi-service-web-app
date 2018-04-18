@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Fuber Taxi Service">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fuber Taxi Service</title>
+
+    <!-- Disable tap highlight on IE -->
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <!-- Web Application Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Fuber Taxi Service">
+    <meta name="theme-color" content="#303F9F">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Ajency Chat">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#303F9F">
+
+    <!-- Tile icon for Win8 -->
+    <meta name="msapplication-TileColor" content="#3372DF">
+    <meta name="msapplication-navbutton-color" content="#303F9F">
+
+    <!-- Material Design Lite -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.orange-indigo.min.css">
+    <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+
+    <!-- App Styling -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="styles/main.css">
+
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/4.12.1/firebase-app.js"></script>
+    <script defer src="/__/firebase/4.12.1/firebase-database.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+    <script defer src="/__/firebase/init.js"></script>
+  </head>
+
+
+  <body>
+
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="custom-header mdl-layout__header mdl-layout__header--waterfall">
+      <div class="mdl-layout__header-row">
+        <!-- Title -->
+        <span class="mdl-layout-title"><i class="material-icons">directions_car</i> &nbsp;&nbsp;Fuber Taxi Service</span>
+        <div class="mdl-layout-spacer"></div>
+      </div>
+    </header>
+
+    <main class="mdl-layout__content">
+
+      <div class="wrapper">
+          
+        <div class="card radius shadowDepth1">
+          
+          <div class="card__image border-tlr-radius">
+            <img src="http://lorempixel.com/400/200/sports/" alt="image" class="border-tlr-radius">
+          </div>
+
+          <div class="card__content card__padding">
+            
+            <div class="card__share">
+                <a id="share" class="share-toggle share-icon" href="#"></a>
+            </div>
+
+            <div class="card__meta">
+              <p><b>Color:</b> <span>Pink</span> &nbsp;|&nbsp; <b>Distance:</b> <span>2 kms</span></p>
+
+            </div>
+
+            <article class="card__article">
+              <h5><a href="#">Car 1</a></h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus harum...</p>
+            </article>
+
+          </div>
+
+          <div class="card__action">
+            
+            <div class="card__author">
+              <img src="http://lorempixel.com/40/40/sports/" alt="user">
+              <div class="card__author-content">
+                Driver <a href="#">John Doe</a>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="card radius shadowDepth1">
+          
+          <div class="card__image border-tlr-radius">
+            <img src="http://lorempixel.com/400/200/sports/" alt="image" class="border-tlr-radius">
+          </div>
+
+          <div class="card__content card__padding">
+            
+            <div class="card__share">
+                <a id="share" class="share-toggle share-icon" href="#"></a>
+            </div>
+
+            <div class="card__meta">
+              <p><b>Color:</b> <span>Pink</span> &nbsp;|&nbsp; <b>Distance:</b> <span>2 kms</span></p>
+
+            </div>
+
+            <article class="card__article">
+              <h5><a href="#">Car 1</a></h5>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus harum...</p>
+            </article>
+
+          </div>
+
+          <div class="card__action">
+            
+            <div class="card__author">
+              <img src="http://lorempixel.com/40/40/sports/" alt="user">
+              <div class="card__author-content">
+                Driver <a href="#">John Doe</a>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+         
+      </div>
+    </main>
+    </div>
+
+    <p id="load"></p>
+    
+    <!-- app script -->
+    <script src="scripts/main.js"></script>
+
+  </body>
+</html>
