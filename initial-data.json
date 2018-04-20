@@ -1,49 +1,49 @@
 {
   "cabs" : {
-    "-K2ib4H77rj0LYewF7dP" : {
+    "cab1" : {
       "name" : "Hatchback fuberGO 1",
       "description" : "Hatchback Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged",
       "image" : "https://file.kbb.com/kbb/vehicleimage/evoxseo/cp/m/11434/2017-chevrolet-sonic-front_11434_032_376x188_gaz.png",
       "color" : "pink",
-      "location" : {
-        "g":"s6g000dy3z",
-        "l" :{
-          "0":15.472608,
-          "1":15.472608
-        }
-      },
       "distanceFromAssignee" : 999999999,
-      "assigned" : true
+      "assigned" : false,
+      "locality": "porvorim"
     },
-    "-K2ib4H77rj0LYewF7dQ" : {
+    "cab2" : {
       "name" : "Sedan fuberXL 1",
       "description" : "Sedan Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged",
       "image" : "http://www.vwimg.com/iris/iris?&vehicle=2018_163VF1_PZ5_2017_07_30&paint=2B2B&fabric=TR&POV=E06,CGD&quality=90&bkgnd=TRANSPARENT&resp=PNG&X=0570&Y=2169&W=8287&H=5693&width=516",
       "color" : "pink",
-      "location" : {
-        "g":"s6g000dy3z",
-        "l" :{
-          "0":15.472608,
-          "1":15.472608
-        }
-      },
       "distanceFromAssignee" : 999999999,
-      "assigned" : true
+      "assigned" : true,
+      "locality": "vasco"
     },
-    "-K2ib4H77rj0LYewF7dA" : {
+    "cab3" : {
       "name" : "SUV Premium 1",
       "description" : "SUV Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged",
       "image" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwuwwVz5E3Gg7PZEwJC09Q92i8axZkUqOHq7ZCASlsilWn4LL6",
       "color" : "pink",
-      "location" : {
-        "g":"s6g000dy3z",
-        "l" :{
-          "0":15.472608,
-          "1":15.472608
-        }
-      },
       "distanceFromAssignee" : 999999999,
-      "assigned" : true
+      "assigned" : true,
+      "locality": "mapusa"
+    }
+  },
+  "cabLocations": {
+    "cab1" : {
+      ".priority" : "tdu82hd9c6",
+      "g" : "tdu82hd9c6",
+      "l" : [ 15.537727, 73.831614 ]
+    },
+    "cab2" : {
+      ".priority" : "tdsx82gw4u",
+      "g" : "tdsx82gw4u",
+      "l" : [ 15.386033, 73.84404 ]
+    },
+    "cab3" : {
+      ".priority" : "tdu2xxutgv",
+      "g" : "tdu2xxutgv",
+      "l" : [ 15.600227, 73.812498 ]
     }
   }
 }
+   
