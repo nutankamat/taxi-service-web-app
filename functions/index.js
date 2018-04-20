@@ -128,6 +128,59 @@ exports.findCabs =
  	
 	});
 
+exports.assignCab = 
+	functions.https.onRequest((request, response) => {
+	
+		response.setHeader("Access-Control-Allow-Origin", "*");	
+
+		var status_code;
+		var result = {};
+
+		if (request.method === "POST"){
+			var request_data = request.body;
+
+				// Query RTDB for cabs status assigned false
+				var queryCab = cabRef
+				.orderByKey()
+				.equalTo(request_data['cabId'])
+				.limitToFirst(1);
+				
+
+				queryCab.on('value', snap=> {
+ 					
+ 					var keyToUpdate = '/'+request_data['cabId']+'/assigned' ;
+ 					var updated_obj = {};
+ 					updated_obj[keyToUpdate] = true;
+ 					
+ 					cabRef.update(updated_obj);	
+
+ 					//@todo make entry in trips node - start time, end time, start location, end location				
+					
+					status_code = 200;
+			
+					result = {	"status": "success", 
+								"message": '',
+								"data": snap.val()
+							 };
+
+					response.status(status_code).send(result);			 
+		 			
+		 		});
+
+		
+		}
+		else{
+			status_code = 400;
+			
+			result = {	"status": "error", 
+						"message": 'Method not supported' 
+					};
+
+			response.status(status_code).send(result);
+		} 
+
+ 	
+	});	
 
 function getFilteredCabs(available_cabs,filters){
 
