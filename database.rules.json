@@ -1,6 +1,13 @@
 {
   "rules": {
-    ".read": "auth != null",
-    ".write": "auth != null"
+    ".read": true,
+    ".write": true,
+    // ".write": "auth != null",
+    "cabs": {
+      ".indexOn": ["assigned","color"]
+    },
+    "cabLocations": {
+      ".indexOn": ["g"]
+    }    
   }
 }
