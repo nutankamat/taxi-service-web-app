@@ -79,6 +79,7 @@ exports.findCabs =
 					
 					snap.forEach(function (cab) {
 		 				var cabId = cab.key;
+		 				var cabData = {}
 		 				
 		 				if(nearestCabs.hasOwnProperty(cabId)){
 		 					
@@ -88,10 +89,9 @@ exports.findCabs =
 		 					
 		 					cabRef.update(updated_obj);
 
-							available_cabs.push({
-	      						_key: cab.key,
-	      						...cab.val()
-	    					});
+		 					cabData = cab.val();
+		 					cabData["_key"] = cab.key;
+							available_cabs.push(cabData);
 
 		 				}
 
