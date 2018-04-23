@@ -12,13 +12,17 @@ let GeoFire = require('geofire');
 const dbRef=admin.database().ref();
 const cabRef=admin.database().ref('cabs');
 const cabLocationsRef=admin.database().ref('cabLocations');
+const cors = require('cors')({origin: true});
 
 
 exports.findCabs = 
 	functions.https.onRequest((request, response) => {
 	
-		response.setHeader("Access-Control-Allow-Origin", "*");
-		
+		response.setHeader("Access-Control-Allow-Origin", "*");	
+		response.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");	
+		response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+
+
 		var status_code;
 		var result = {};
 
@@ -116,12 +120,14 @@ exports.findCabs =
 			
 		}
 		else{
-			status_code = 400;
-			
+
+			response.setHeader("Access-Control-Max-Age", "1728000");
+			response.setHeader("Content-Length", "0");
+
+			status_code = 204;
 			result = {	"status": "error", 
 						"message": 'Method not supported' 
 					};
-
 			response.status(status_code).send(result);
 		} 
 
@@ -132,6 +138,9 @@ exports.assignCab =
 	functions.https.onRequest((request, response) => {
 	
 		response.setHeader("Access-Control-Allow-Origin", "*");	
+		response.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");	
+		response.setHeader("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+
 
 		var status_code;
 		var result = {};
@@ -155,13 +164,11 @@ exports.assignCab =
  					cabRef.update(updated_obj);	
 
  					//@todo make entry in trips node - start time, end time, start location, end location				
-					
 					status_code = 200;
-			
 					result = {	"status": "success", 
-								"message": '',
-								"data": snap.val()
-							 };
+								"message": "",
+								"data" : snap.val() 
+							};
 
 					response.status(status_code).send(result);			 
 		 			
@@ -170,13 +177,16 @@ exports.assignCab =
 		
 		}
 		else{
-			status_code = 400;
 			
+			response.setHeader("Access-Control-Max-Age", "1728000");
+			response.setHeader("Content-Length", "0");
+			
+			status_code = 204;
 			result = {	"status": "error", 
 						"message": 'Method not supported' 
 					};
-
 			response.status(status_code).send(result);
+			
 		} 
 
  	
@@ -184,15 +194,20 @@ exports.assignCab =
 
 function getFilteredCabs(available_cabs,filters){
 
-	var filtered_cabs = [];
+	var filtered_cabs = available_cabs;
 
-	filtered_cabs = _.filter(available_cabs, function(cab) {
- 
-     	if( filters.hasOwnProperty('cab_color') && _.contains(filters['cab_color'], cab.color ) ){
-     		return cab;
-     	}
-     	
-	});
+	if( filters.hasOwnProperty('cab_color') && filters['cab_color'].length > 0){
+
+		filtered_cabs = _.filter(available_cabs, function(cab) {
+	 
+	     	if( filters.hasOwnProperty('cab_color') && _.contains(filters['cab_color'], cab.color ) ){
+	     		return cab;
+	     	}
+	     	
+		});		
+
+	}
+
 
 	return filtered_cabs;
 }
