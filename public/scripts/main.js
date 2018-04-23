@@ -4,8 +4,8 @@
 function FuberTaxiService() {
 	this.checkSetup();
 
-	this.base_api_url = "https://us-central1-fuber-taxi-service.cloudfunctions.net/" 
-	// this.base_api_url = "http://localhost:5001/fuber-taxi-service/us-central1/" //(for local testing)
+	// this.base_api_url = "https://us-central1-fuber-taxi-service.cloudfunctions.net/" 
+	this.base_api_url = "http://localhost:5001/fuber-taxi-service/us-central1/" //(for local testing)
 
 	// Data for list of cabs
 	var url = new URL(window.location.href);
@@ -71,8 +71,67 @@ FuberTaxiService.prototype.initFirebase = function() {
 	this.loadAvailableCabs();
 };
 
+
+
 FuberTaxiService.prototype.displayCabs = function(data) {
 	console.log(data);
+
+	if(data.length >0) {
+
+		for (var key in data) {
+
+			var child = data[key]
+		
+			var markup = ''+
+	        '<div class="card radius shadowDepth1">'+
+	          
+	          '<div class="card__image border-tlr-radius">'+
+	            '<img src="'+child.image+'" alt="image" class="border-tlr-radius">'+
+	          '</div>'+
+
+	          '<div class="card__content card__padding">'+
+	            
+	            '<div class="card__share">'+
+	                '<a id="share" class="share-toggle share-icon" href="#"></a>'+
+	            '</div>'+
+
+	            '<div class="card__meta">'+
+	              '<p><b>Color:</b> <span>'+child.color+'</span> &nbsp;|&nbsp; <b>Distance:</b> <span>'+child.distanceFromAssignee.toFixed(2)+' kms</span></p>'+
+
+	            '</div>'+
+
+	            '<article class="card__article">'+
+	              '<h5><a href="#">'+child.name+'</a></h5>'+
+	              '<p>'+child.description+'</p>'+
+	            '</article>'+
+
+	          '</div>'+
+
+	          '<div class="card__action hidden">'+
+	            
+	            '<div class="card__author">'+
+	              '<img src="http://lorempixel.com/40/40/sports/" alt="user">'+
+	              '<div class="card__author-content">Driver <a href="#">John Doe</a></div>'+
+	            '</div>'+
+
+	          '</div>'+
+
+	        '</div>';
+
+	     	$("#available-cabs").append(markup);
+	     	$("#page-loading").hide();
+			}
+
+	}
+	else{
+		var markup = ''+
+	        '<div class="card radius shadowDepth1"><h6>No  cabs available in your area with your preferences<h6></div>'
+		$("#available-cabs").append(markup);
+		$("#page-loading").hide();
+	}
+
+
+
 };
 
 
@@ -108,7 +167,7 @@ FuberTaxiService.prototype.loadAvailableCabs = function() {
 		})
 		.done(
 				function(response) {          
-          if(response.status == "success" && response.data.length > 0){
+          if(response.status == "success" && response.data.length >= 0){
           	_parent.displayCabs(response.data);
           }
         })
